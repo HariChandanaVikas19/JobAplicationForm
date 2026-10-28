@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Application Tracker</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Job Application Tracker</h1>
+            <p>Track your job applications easily</p>
+        </header>
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <h3>Total Applications</h3>
+                <p id="totalJobs">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Interviews</h3>
+                <p id="interviewJobs">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Selected</h3>
+                <p id="selectedJobs">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Rejected</h3>
+                <p id="rejectedJobs">0</p>
+            </div>
+
+        </section>
+
+        <!-- Add Job Form -->
+        <section class="form-section">
+
+            <h2 id="formTitle">Add Job Application</h2>
+
+            <form id="jobForm">
+
+                <input type="hidden" id="jobId">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input
+                            type="text"
+                            id="company"
+                            placeholder="Enter company name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Role</label>
+                        <input
+                            type="text"
+                            id="role"
+                            placeholder="Enter job role"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Package</label>
+                        <input
+                            type="text"
+                            id="package"
+                            placeholder="Example: 6 LPA"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Status</label>
+
+                        <select id="status" required>
+                            <option value="">Select Status</option>
+                            <option value="Applied">Applied</option>
+                            <option value="Interview">Interview</option>
+                            <option value="Selected">Selected</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="form-buttons">
+
+                    <button type="submit" id="submitBtn">
+                        Add Application
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelBtn"
+                        class="cancel-btn"
+                        onclick="cancelEdit()"
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- Search and Filter -->
+
+        <section class="controls">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search company or role..."
+                oninput="filterJobs()"
+            >
+
+            <select id="filterStatus" onchange="filterJobs()">
+
+                <option value="All">All Status</option>
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Selected">Selected</option>
+                <option value="Rejected">Rejected</option>
+
+            </select>
+
+        </section>
+
+        <!-- Job Applications -->
+
+        <section class="jobs-section">
+
+            <h2>Applications</h2>
+
+            <div id="loading">
+                Loading applications...
+            </div>
+
+            <div id="jobList"></div>
+
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
